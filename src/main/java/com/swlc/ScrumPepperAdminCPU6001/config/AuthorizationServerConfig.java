@@ -1,7 +1,7 @@
 package com.swlc.ScrumPepperAdminCPU6001.config;
 
-import com.swlc.ScrumPepperCPU6001.constant.OAuth2Constant;
-import com.swlc.ScrumPepperCPU6001.exception.CustomOauthException;
+import com.swlc.ScrumPepperAdminCPU6001.constant.OAuth2Constant;
+import com.swlc.ScrumPepperAdminCPU6001.exception.CustomOauthException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -44,13 +44,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         configurer
                 .inMemory()
                 .withClient(OAuth2Constant.ADMIN_CLIENT_ID)
-                .secret(encoder.encode(OAuth2Constant.CLIENT_SECRET))
-                .authorizedGrantTypes(OAuth2Constant.GRANT_TYPE_PASSWORD, OAuth2Constant.AUTHORIZATION_CODE, OAuth2Constant.REFRESH_TOKEN, OAuth2Constant.IMPLICIT)
-                .scopes(OAuth2Constant.SCOPE_READ, OAuth2Constant.SCOPE_WRITE, OAuth2Constant.TRUST)
-                .accessTokenValiditySeconds(OAuth2Constant.ACCESS_TOKEN_VALIDITY_SECONDS)
-                .refreshTokenValiditySeconds(OAuth2Constant.REFRESH_TOKEN_VALIDITY_SECONDS)
-                .and()
-                .withClient(OAuth2Constant.USER_CLIENT_ID)
                 .secret(encoder.encode(OAuth2Constant.CLIENT_SECRET))
                 .authorizedGrantTypes(OAuth2Constant.GRANT_TYPE_PASSWORD, OAuth2Constant.AUTHORIZATION_CODE, OAuth2Constant.REFRESH_TOKEN, OAuth2Constant.IMPLICIT)
                 .scopes(OAuth2Constant.SCOPE_READ, OAuth2Constant.SCOPE_WRITE, OAuth2Constant.TRUST)
