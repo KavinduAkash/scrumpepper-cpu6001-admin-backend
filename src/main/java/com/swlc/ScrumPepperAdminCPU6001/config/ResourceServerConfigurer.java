@@ -30,6 +30,9 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
 // ------------ /corporate --------------------------------------------------------------------------------------------------
                 .antMatchers(HttpMethod.GET, ApplicationConstant.API_BASE_URL + "/corporate/all")
                 .access("hasAnyRole('ROLE_ADMIN')")
+// ------------ /user --------------------------------------------------------------------------------------------------
+                .antMatchers(HttpMethod.GET, ApplicationConstant.API_BASE_URL + "/user/all")
+                .access("hasAnyRole('ROLE_ADMIN')")
                 .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 }
