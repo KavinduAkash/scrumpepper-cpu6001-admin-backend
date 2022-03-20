@@ -5,7 +5,9 @@ import com.swlc.ScrumPepperAdminCPU6001.dto.CorporateDTO;
 import com.swlc.ScrumPepperAdminCPU6001.entity.CorporateEntity;
 import com.swlc.ScrumPepperAdminCPU6001.enums.StatusType;
 import com.swlc.ScrumPepperAdminCPU6001.exception.AdminException;
+import com.swlc.ScrumPepperAdminCPU6001.repository.CorporateEmployeeRepository;
 import com.swlc.ScrumPepperAdminCPU6001.repository.CorporateRepository;
+import com.swlc.ScrumPepperAdminCPU6001.repository.ProjectRepository;
 import com.swlc.ScrumPepperAdminCPU6001.service.CorporateService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,14 @@ import java.util.Optional;
 public class CorporateServiceImpl implements CorporateService {
 
     private final CorporateRepository corporateRepository;
+    private final ProjectRepository projectRepository;
+    private final CorporateEmployeeRepository corporateEmployeeRepository;
 
     @Autowired
-    public CorporateServiceImpl(CorporateRepository corporateRepository) {
+    public CorporateServiceImpl(CorporateRepository corporateRepository, ProjectRepository projectRepository, CorporateEmployeeRepository corporateEmployeeRepository) {
         this.corporateRepository = corporateRepository;
+        this.projectRepository = projectRepository;
+        this.corporateEmployeeRepository = corporateEmployeeRepository;
     }
 
     @Override
@@ -77,7 +83,9 @@ public class CorporateServiceImpl implements CorporateService {
                     c.getContactNumber2(),
                     c.getEmail(),
                     c.getCorporateLogo(),
-                    c.getStatusType()
+                    c.getStatusType(),
+                    corporateEmployeeRepository.getEmployeeCount(c),
+                    projectRepository.getProjectCount(c)
             );
         } catch (Exception e) {
             throw e;

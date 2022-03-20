@@ -22,6 +22,8 @@ public class CorporateDTO {
     private String email;
     private String corporateLogo;
     private StatusType statusType;
+    private int employeeCount;
+    private int projectCount;
 
     @Override
     public String toString() {
