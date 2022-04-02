@@ -8,6 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class ScrumPepperAdminCpu6001Application extends SpringBootServletInitializer {
 
+	// app builder config
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(ScrumPepperAdminCpu6001Application.class);
